@@ -20,6 +20,11 @@ async function main(){
 }
 
 let chat=require("./models/chat.js");
+
+app.get("/",async(req,res)=>{
+    let chats=await chat.find();
+    res.render("chats.ejs",{chats});
+})
 app.get("/chats",async(req,res)=>{
     let chats=await chat.find();
     res.render("chats.ejs",{chats});
